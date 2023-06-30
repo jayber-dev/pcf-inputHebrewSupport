@@ -18,6 +18,8 @@
       -->
     </external-service-usage>
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ Input Setup ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
     <property name="inputValue" display-name-key="inputValue" description-key="inputValue" of-type="SingleLine.Text" usage="bound" required="true" />
     <property name="type" display-name-key="type" of-type="Enum" usage="input" default-value="48">
       <value name="text" display-name-key="text">text</value>
@@ -31,24 +33,64 @@
       <value name="time" display-name-key="time">time</value>
     </property>
 
-    <property name="backgroundColor" display-name-key="backgroundColor" description-key="backgroundColor" of-type="SingleLine.Text" usage="bound" required="true" />
-
-
-    <property name="Disabled" display-name-key="Disabled" of-type="Enum" usage="input" default-value="48">
+    <property name="onSelect" display-name-key="onSelect" of-type="Enum" usage="bound" default-value="false">
       <value name="true" display-name-key="true">true</value>
       <value name="false" display-name-key="false">false</value>
     </property>
 
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ Styling Contorls ~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+    <property name="backgroundColor" display-name-key="backgroundColor" description-key="backgroundColor" of-type="SingleLine.Text" usage="bound" required="true" />
+
+    <!--                    ~~~~~~ Disabled control ~~~~~~                    -->
+    <property name="Disabled" display-name-key="Disabled" of-type="Enum" usage="input" default-value="false">
+      <value name="true" display-name-key="true">true</value>
+      <value name="false" display-name-key="false">false</value>
+    </property>
+
+    <!--                    ~~~~~~ Text Direction control ~~~~~~              -->
+    <property name="textDirection" display-name-key="textDirection" of-type="Enum" usage="input" default-value="rtl">
+      <value name="rtl" display-name-key="right To left">rtl</value>
+      <value name="ltr" display-name-key="Left To Right">ltr</value>
+    </property>
+
+
     <!--                    ~~~~~~  border styling ~~~~~~                     -->
-    <property name="borderTop" display-name-key="borderTop" description-key="borderTop" of-type="SingleLine.Text" usage="bound" required="true" />
-    <property name="borderBottom" display-name-key="borderBottom" description-key="borderBottom" of-type="SingleLine.Text" usage="bound" required="true" />
-    <property name="borderRight" display-name-key="borderRight" description-key="borderRight" of-type="SingleLine.Text" usage="bound" required="true" />
-    <property name="borderLeft" display-name-key="borderLeft" description-key="borderLeft" of-type="SingleLine.Text" usage="bound" required="true" />
-    <property name="borderRadius" display-name-key="borderRadius" description-key="borderRadius" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="borderTop" display-name-key="borderTop" description-key="borderTop" default-value="1" of-type="Whole.None" usage="bound" required="true" />
+    <property name="borderBottom" display-name-key="borderBottom" description-key="borderBottom" default-value="1" of-type="Whole.None" usage="bound" required="true" />
+    <property name="borderRight" display-name-key="borderRight" description-key="borderRight" default-value="1" of-type="Whole.None" usage="bound" required="true" />
+    <property name="borderLeft" display-name-key="borderLeft" description-key="borderLeft" default-value="1" of-type="Whole.None" usage="bound" required="true" />
+    <property name="borderRadius" display-name-key="borderRadius" description-key="borderRadius" default-value="0" of-type="Whole.None" usage="bound" required="true" />
     <type-group name="borderRadius">
       <type>Whole.None</type>
     </type-group>
-    
+
+    <!--                   ~~~~~~ Padding styling ~~~~~~                      -->
+    <property name="paddingTop" display-name-key="paddingTop" description-key="paddingTop" default-value="1" of-type="Whole.None" usage="bound" required="true" />
+    <property name="paddingBottom" display-name-key="paddingBottom" description-key="paddingBottom" default-value="1" of-type="Whole.None" usage="bound" required="true" />
+    <property name="paddingRight" display-name-key="paddingRight" description-key="paddingRight" default-value="1" of-type="Whole.None" usage="bound" required="true" />
+    <property name="paddingLeft" display-name-key="paddingLeft" description-key="paddingLeft" default-value="1" of-type="Whole.None" usage="bound" required="true" />
+
+    <!--                   ~~~~~~ Font styling ~~~~~~                         -->
+    <property name="fontSize" display-name-key="fontSize" description-key="fontSize" default-value="14" of-type="Whole.None" usage="bound" required="true" />
+
+    <!--                   ~~~~~~ onFocus styling ~~~~~~                      -->
+    <property name="outlineStyle" display-name-key="outlineStyle" of-type="Enum" usage="input" default-value="rtl">
+      <value name="dotted" display-name-key="dotted">dotted</value>
+      <value name="dashed " display-name-key="dashed ">dashed </value>
+      <value name="solid" display-name-key="solid">solid</value>
+      <value name="double" display-name-key="double">double</value>
+      <value name="groove" display-name-key="groove">groove</value>
+      <value name="ridge" display-name-key="ridge">ridge</value>
+      <value name="inset" display-name-key="inset">inset</value>
+      <value name="outset" display-name-key="outset">outset</value>
+      <value name="none" display-name-key="none">none</value>
+      <value name="hidden" display-name-key="hidden">hidden</value>
+    </property>
+    <property name="outlineWidth" display-name-key="outlineWidth" description-key="outlineWidth" default-value="10" of-type="Whole.None" usage="bound" required="true" />
+    <property name="outlineColor" display-name-key="outlineColor" description-key="outlineColor" default-value="10" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="outlineOffset" display-name-key="outlineOffset" description-key="outlineOffset" default-value="10" of-type="Whole.None" usage="bound" required="true" />
+
     
     <!--
       Property node's of-type attribute can be of-type-group attribute.
