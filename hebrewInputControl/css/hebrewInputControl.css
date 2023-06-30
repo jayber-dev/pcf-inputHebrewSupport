@@ -1,11 +1,12 @@
 .hebrewInput\.hebrewInputControl {
-    
+    position: relative;
     direction: rtl;
-    width: 97.2%;
+   
 }
 .hebrewInput\.hebrewInputControl input {
     border: 0px solid;
     direction: rtl;
+    width: 97.2%;
 }
 
 /* .input-focused:focus {
