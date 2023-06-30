@@ -19,6 +19,37 @@
     </external-service-usage>
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
     <property name="inputValue" display-name-key="inputValue" description-key="inputValue" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="type" display-name-key="type" of-type="Enum" usage="input" default-value="48">
+      <value name="text" display-name-key="text">text</value>
+      <value name="number" display-name-key="number">number</value>
+      <value name="email" display-name-key="email">email</value>
+      <value name="checkbox" display-name-key="checkbox">checkbox</value>
+      <value name="color" display-name-key="color">color</value>
+      <value name="date" display-name-key="date">date</value>
+      <value name="password" display-name-key="password">password</value>
+      <value name="range" display-name-key="range">range</value>
+      <value name="time" display-name-key="time">time</value>
+    </property>
+
+    <property name="backgroundColor" display-name-key="backgroundColor" description-key="backgroundColor" of-type="SingleLine.Text" usage="bound" required="true" />
+
+
+    <property name="Disabled" display-name-key="Disabled" of-type="Enum" usage="input" default-value="48">
+      <value name="true" display-name-key="true">true</value>
+      <value name="false" display-name-key="false">false</value>
+    </property>
+
+    <!--                    ~~~~~~  border styling ~~~~~~                     -->
+    <property name="borderTop" display-name-key="borderTop" description-key="borderTop" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="borderBottom" display-name-key="borderBottom" description-key="borderBottom" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="borderRight" display-name-key="borderRight" description-key="borderRight" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="borderLeft" display-name-key="borderLeft" description-key="borderLeft" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="borderRadius" display-name-key="borderRadius" description-key="borderRadius" of-type="SingleLine.Text" usage="bound" required="true" />
+    <type-group name="borderRadius">
+      <type>Whole.None</type>
+    </type-group>
+    
+    
     <!--
       Property node's of-type attribute can be of-type-group attribute.
       Example:
@@ -32,6 +63,7 @@
     -->
     <resources>
       <code path="index.ts" order="1"/>
+      <css path="css/hebrewInputControl.css" order="2" />
       <!-- UNCOMMENT TO ADD MORE RESOURCES
       <css path="css/hebrewInputControl.css" order="1" />
       <resx path="strings/hebrewInputControl.1033.resx" version="1.0.0" />

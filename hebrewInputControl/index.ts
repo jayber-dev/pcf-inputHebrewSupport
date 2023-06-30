@@ -8,7 +8,7 @@ export class hebrewInputControl implements ComponentFramework.StandardControl<II
     private _container: HTMLDivElement;
     private _inputElem: HTMLInputElement;
     private _context: ComponentFramework.Context<IInputs>
-    private _value: string;
+    private _value: string | boolean;
     private _notifyOutputChanged: () => void;
     constructor()
     {
@@ -26,14 +26,43 @@ export class hebrewInputControl implements ComponentFramework.StandardControl<II
     public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container:HTMLDivElement): void
     {
         notifyOutputChanged()
+        this._notifyOutputChanged = notifyOutputChanged
         this._value = context.parameters.inputValue.raw!
         this._context = context
         this._container = document.createElement("div")
         this._inputElem = document.createElement("input")
-        this._inputElem.setAttribute("type","text")
-        
-        this._inputElem.addEventListener("input", this.handleChange)
+        this._inputElem.setAttribute("type",context.parameters.type.raw)
+        console.log(context.parameters.Disabled.raw);
 
+        // -------------------------background color ------------------------
+        if(context.parameters.backgroundColor.raw!.length > 0) {
+            this._inputElem.style.backgroundColor = `${context.parameters.backgroundColor.raw!}`
+        }
+        // ------------------------- is disabled ----------------------------
+        if(context.parameters.Disabled.raw === "true") {
+            this._inputElem.setAttribute("disabled","true")
+        } 
+
+        // ------------------------- border styling -------------------------
+        if(context.parameters.borderTop.raw!.length > 0) {
+            this._inputElem.style.borderTop = `${context.parameters.borderTop.raw!}px solid`
+        }
+        if(context.parameters.borderBottom.raw!.length > 0) {
+            this._inputElem.style.borderBottom = `${context.parameters.borderBottom.raw!}px solid`
+        }
+        if(context.parameters.borderRight.raw!.length > 0) {
+            this._inputElem.style.borderRight = `${context.parameters.borderRight.raw!}px solid`
+        }
+        if(context.parameters.borderLeft.raw!.length > 0) {
+            this._inputElem.style.borderLeft = `${context.parameters.borderLeft.raw!}px solid`
+        }
+        if(context.parameters.borderRadius.raw!.length > 0) {
+            this._inputElem.style.borderRadius = `${context.parameters.borderRadius.raw!}px`
+        }
+
+
+        
+        this._inputElem.addEventListener("input", this.handleChange.bind(this))
         this._container.appendChild(this._inputElem)
         container.appendChild(this._container)
 
@@ -41,6 +70,13 @@ export class hebrewInputControl implements ComponentFramework.StandardControl<II
     }
 
     public handleChange() {
+        if(this._context.parameters.type.raw === "checkbox") {
+
+            this._context.parameters.inputValue.raw = this._inputElem.checked ? "true" : "false";
+            this._notifyOutputChanged()
+            return
+        }
+        this._value = this._inputElem.value
         this._context.parameters.inputValue.raw = this._inputElem.value
         
         this._notifyOutputChanged()
@@ -53,8 +89,41 @@ export class hebrewInputControl implements ComponentFramework.StandardControl<II
      */
     public updateView(context: ComponentFramework.Context<IInputs>): void
     {
+        // -------------------------background color ------------------------
+        if(context.parameters.backgroundColor.raw!.length > 0) {
+            this._inputElem.style.backgroundColor = `${context.parameters.backgroundColor.raw!}`
+        }
+        // ------------------------- is disabled ----------------------------
+        if(context.parameters.Disabled.raw === "true") {
+            this._inputElem.setAttribute("disabled","true")
+        } else {
+            this._inputElem.removeAttribute("disabled")
+        }
+
+        // ------------------------- border styling ------------------------
+        if(context.parameters.borderTop.raw!.length > 0) {
+            this._inputElem.style.borderTop = `${context.parameters.borderTop.raw!}px solid`
+        }
+        if(context.parameters.borderBottom.raw!.length > 0) {
+            this._inputElem.style.borderBottom = `${context.parameters.borderBottom.raw!}px solid`
+        }
+        if(context.parameters.borderRight.raw!.length > 0) {
+            this._inputElem.style.borderRight = `${context.parameters.borderRight.raw!}px solid`
+        }
+        if(context.parameters.borderLeft.raw!.length > 0) {
+            this._inputElem.style.borderLeft = `${context.parameters.borderLeft.raw!}px solid`
+        }
+        if(context.parameters.borderRadius.raw!.length > 0) {
+            this._inputElem.style.borderRadius = `${context.parameters.borderRadius.raw!}px`
+        }
+
+        // ------------------------ inputValue -----------------------------
+
+        this._inputElem.setAttribute("type",context.parameters.type.raw)
+
         this._inputElem.value = this._context.parameters.inputValue.raw!
-        this._notifyOutputChanged()
+        console.log('hello');
+        
         // Add code to update control view
     }
 
@@ -73,7 +142,7 @@ export class hebrewInputControl implements ComponentFramework.StandardControl<II
      */
     public destroy(): void
     {
-        // this._inputElem.removeEventListener("input", this.handleChange)
+        this._inputElem.removeEventListener("input", this.handleChange)
         // Add code to cleanup control if necessary
     }
 }
