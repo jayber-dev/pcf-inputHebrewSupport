@@ -150,7 +150,7 @@ export class hebrewInputControl implements ComponentFramework.StandardControl<II
 
     public handleFocus(){
         // this._inputElem.classList.add("input-focused")
-        this._context.parameters.onSelect.raw = "true"
+        this._context.parameters.onSelect.raw = true
         this._inputElem.style.outlineWidth = `${this._context.parameters.outlineWidth.raw}px`
         this._inputElem.style.outlineOffset = `${this._context.parameters.outlineOffset.raw}px`
         this._inputElem.style.outlineColor = `${this._context.parameters.outlineColor.raw}`
@@ -159,7 +159,7 @@ export class hebrewInputControl implements ComponentFramework.StandardControl<II
     }
 
     public handleBlur(){
-        this._context.parameters.onSelect.raw = "false"
+        this._context.parameters.onSelect.raw = false
         this._inputElem.style.outline = "none"
         this._notifyOutputChanged()
     }

@@ -33,7 +33,7 @@
       <value name="time" display-name-key="time">time</value>
     </property>
 
-    <property name="onSelect" display-name-key="onSelect" of-type="Enum" usage="bound" default-value="false">
+    <property name="onSelect" display-name-key="onSelect" of-type="TwoOptions" usage="bound" default-value="false">
       <value name="true" display-name-key="true">true</value>
       <value name="false" display-name-key="false">false</value>
     </property>
