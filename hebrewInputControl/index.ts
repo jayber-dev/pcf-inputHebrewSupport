@@ -70,18 +70,7 @@ export class hebrewInputControl implements ComponentFramework.StandardControl<II
         container.appendChild(this._container)
     }
 
-    public handleChange() {
-        if (this._context.parameters.type.raw === "checkbox") {
-
-            this._context.parameters.inputValue.raw = this._inputElem.checked ? "true" : "false";
-            this._notifyOutputChanged()
-            return
-        }
-        this._value = this._inputElem.value
-        this._context.parameters.inputValue.raw = this._inputElem.value
-
-        this._notifyOutputChanged()
-    }
+    
 
     
     /**
@@ -146,6 +135,21 @@ export class hebrewInputControl implements ComponentFramework.StandardControl<II
         this._inputElem.removeEventListener("focus", this.handleFocus)
         this._inputElem.removeEventListener("blur", this.handleBlur)
         // Add code to cleanup control if necessary
+    }
+
+    // --------------------- Costum Functions(handlers) --------------------
+
+    public handleChange() {
+        if (this._context.parameters.type.raw === "checkbox") {
+
+            this._context.parameters.inputValue.raw = this._inputElem.checked ? "true" : "false";
+            this._notifyOutputChanged()
+            return
+        }
+        this._value = this._inputElem.value
+        this._context.parameters.inputValue.raw = this._inputElem.value
+
+        this._notifyOutputChanged()
     }
 
     public handleFocus(){
