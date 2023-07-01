@@ -1,14 +1,71 @@
 .hebrewInput\.hebrewInputControl {
     position: relative;
     direction: rtl;
-   
+
 }
+
 .hebrewInput\.hebrewInputControl input {
     border: 0px solid;
     direction: rtl;
     width: 97.2%;
+    
 }
 
 /* .input-focused:focus {
         
 } */
+
+.fade-in {
+    animation-name: fade-in ;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+.slide-in-top {
+    animation-name: slide-in-top ;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+.slide-in-bottom {
+    animation-name: slide-in-bottom ;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+.slide-in-left {
+    animation-name: slide-in-left ;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+.slide-in-right {
+    animation-name: slide-in-right ;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+@keyframes slide-in-top {
+    0%{transform: translate(0, -500%);}
+    
+}
+@keyframes slide-in-bottom {
+    0%{transform: translate(0, 2000%);}   
+}
+@keyframes slide-in-left {
+    0%{transform: translate(-2000%, 0);}   
+}
+@keyframes slide-in-right {
+    0%{transform: translate(2000%, 0);}   
+}

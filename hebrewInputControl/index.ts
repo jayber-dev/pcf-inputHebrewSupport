@@ -32,15 +32,18 @@ export class hebrewInputControl implements ComponentFramework.StandardControl<II
         this._inputElem = document.createElement("input")
         this._inputElem.addEventListener("input", this.handleChange.bind(this))
         this._inputElem.setAttribute("type", context.parameters.type.raw)
+
+        // ------------------------- text direction --------------------------
         this._inputElem.style.direction = context.parameters.textDirection.raw!
-        // -------------------------background color ------------------------
+        // ------------------------- background color ------------------------
         if (context.parameters.backgroundColor.raw!.length > 0) {
             this._inputElem.style.backgroundColor = `${context.parameters.backgroundColor.raw!}`
         }
         // ------------------------- is disabled ----------------------------
-        if (context.parameters.Disabled.raw === "true") {
-            this._inputElem.setAttribute("disabled", "true")
-        }
+        // if (context.parameters.disabled.raw) {
+        //     this._inputElem.setAttribute("disabled", "true")
+        // } 
+        this._inputElem.setAttribute("disabled", `${context.parameters.disabled.raw}`)
 
         // ------------------------- Font Styilng ---------------------------
         this._inputElem.style.fontSize = `${context.parameters.fontSize.raw}px`
@@ -65,6 +68,13 @@ export class hebrewInputControl implements ComponentFramework.StandardControl<II
         this._inputElem.style.paddingRight = `${context.parameters.paddingRight.raw!}px` || "1px"
         this._inputElem.style.paddingLeft = `${context.parameters.paddingLeft.raw!}px` || "1px"
 
+        // ------------------------- animations Initialization ---------------c
+        console.log(context.parameters.animationOnInit.raw);
+        if(context.parameters.animationOnInit.raw !== "none") {
+            this._inputElem.classList.add(context.parameters.animationOnInit.raw)
+        }
+
+        
         // ------------------------- Elemnts Creation ------------------------        
         this._container.appendChild(this._inputElem)
         container.appendChild(this._container)
@@ -78,17 +88,22 @@ export class hebrewInputControl implements ComponentFramework.StandardControl<II
      * @param context The entire property bag available to control via Context Object; It contains values as set up by the customizer mapped to names defined in the manifest, as well as utility functions
      */
     public updateView(context: ComponentFramework.Context<IInputs>): void {
+
+        // ------------------------- text direction --------------------------
+        this._inputElem.style.direction = context.parameters.textDirection.raw!
         // -------------------------background color ------------------------
         if (context.parameters.backgroundColor.raw!.length > 0) {
             this._inputElem.style.backgroundColor = `${context.parameters.backgroundColor.raw!}`
         }
         // ------------------------- is disabled ----------------------------
-        if (context.parameters.Disabled.raw === "true") {
+        if (context.parameters.disabled.raw) {
             this._inputElem.setAttribute("disabled", "true")
+         
         } else {
+           
             this._inputElem.removeAttribute("disabled")
         }
-
+        // this._inputElem.setAttribute("disabled", `${context.parameters.disabled.raw}`)
         // ------------------------- Font Styilng ---------------------------
         this._inputElem.style.fontSize = `${context.parameters.fontSize.raw}px`
 
@@ -108,6 +123,12 @@ export class hebrewInputControl implements ComponentFramework.StandardControl<II
         this._inputElem.style.paddingRight = `${context.parameters.paddingRight.raw!}px` || "1px"
         this._inputElem.style.paddingLeft = `${context.parameters.paddingLeft.raw!}px` || "1px"
 
+        // ------------------------- animations Initialization ---------------c
+        console.log(context.parameters.animationOnInit.raw);
+        if(context.parameters.animationOnInit.raw !== "none") {
+            this._inputElem.classList.add(context.parameters.animationOnInit.raw)
+        }
+
         // ------------------------ inputValue Updating ----------------------
 
         this._inputElem.setAttribute("type", context.parameters.type.raw)
@@ -122,7 +143,8 @@ export class hebrewInputControl implements ComponentFramework.StandardControl<II
     public getOutputs(): IOutputs {
         return {
             inputValue: this._context.parameters.inputValue.raw!,
-            onSelect: this._context.parameters.onSelect.raw            
+            onSelect: this._context.parameters.onSelect.raw,
+            disabled: this._context.parameters.disabled.raw                
         };
     }
 
