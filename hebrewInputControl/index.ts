@@ -14,6 +14,37 @@ export class hebrewInputControl implements ComponentFramework.StandardControl<II
 
     }
 
+    // --------------------- Costum Functions(handlers) --------------------
+
+    public handleChange() {
+        if (this._context.parameters.type.raw === "checkbox") {
+
+            this._context.parameters.inputValue.raw = this._inputElem.checked ? "true" : "false";
+            this._notifyOutputChanged()
+            return
+        }
+        this._value = this._inputElem.value
+        this._context.parameters.inputValue.raw = this._inputElem.value
+
+        this._notifyOutputChanged()
+    }
+
+    public handleFocus(){
+        // this._inputElem.classList.add("input-focused")
+        this._context.parameters.onSelect.raw = true
+        this._inputElem.style.outlineWidth = `${this._context.parameters.outlineWidth.raw}px`
+        this._inputElem.style.outlineOffset = `${this._context.parameters.outlineOffset.raw}px`
+        this._inputElem.style.outlineColor = `${this._context.parameters.outlineColor.raw}`
+        this._inputElem.style.outlineStyle = this._context.parameters.outlineStyle.raw     
+        this._notifyOutputChanged()
+    }
+
+    public handleBlur(){
+        this._context.parameters.onSelect.raw = false
+        this._inputElem.style.outline = "none"
+        this._notifyOutputChanged()
+    }
+
     /**
      * Used to initialize the control instance. Controls can kick off remote server calls and other initialization actions here.
      * Data-set values are not initialized here, use updateView.
@@ -40,10 +71,10 @@ export class hebrewInputControl implements ComponentFramework.StandardControl<II
             this._inputElem.style.backgroundColor = `${context.parameters.backgroundColor.raw!}`
         }
         // ------------------------- is disabled ----------------------------
-        // if (context.parameters.disabled.raw) {
-        //     this._inputElem.setAttribute("disabled", "true")
-        // } 
-        this._inputElem.setAttribute("disabled", `${context.parameters.disabled.raw}`)
+        if (context.parameters.disabled.raw) {
+            this._inputElem.setAttribute("disabled", "true")
+        } 
+       
 
         // ------------------------- Font Styilng ---------------------------
         this._inputElem.style.fontSize = `${context.parameters.fontSize.raw}px`
@@ -69,10 +100,10 @@ export class hebrewInputControl implements ComponentFramework.StandardControl<II
         this._inputElem.style.paddingLeft = `${context.parameters.paddingLeft.raw!}px` || "1px"
 
         // ------------------------- animations Initialization ---------------c
-        console.log(context.parameters.animationOnInit.raw);
-        if(context.parameters.animationOnInit.raw !== "none") {
-            this._inputElem.classList.add(context.parameters.animationOnInit.raw)
-        }
+        // console.log(context.parameters.animationOnInit.raw);
+        // if(context.parameters.animationOnInit.raw !== "none") {
+        //     this._inputElem.classList.add(context.parameters.animationOnInit.raw)
+        // }
 
         
         // ------------------------- Elemnts Creation ------------------------        
@@ -103,7 +134,7 @@ export class hebrewInputControl implements ComponentFramework.StandardControl<II
            
             this._inputElem.removeAttribute("disabled")
         }
-        // this._inputElem.setAttribute("disabled", `${context.parameters.disabled.raw}`)
+        
         // ------------------------- Font Styilng ---------------------------
         this._inputElem.style.fontSize = `${context.parameters.fontSize.raw}px`
 
@@ -124,10 +155,10 @@ export class hebrewInputControl implements ComponentFramework.StandardControl<II
         this._inputElem.style.paddingLeft = `${context.parameters.paddingLeft.raw!}px` || "1px"
 
         // ------------------------- animations Initialization ---------------c
-        console.log(context.parameters.animationOnInit.raw);
-        if(context.parameters.animationOnInit.raw !== "none") {
-            this._inputElem.classList.add(context.parameters.animationOnInit.raw)
-        }
+        // console.log(context.parameters.animationOnInit.raw);
+        // if(context.parameters.animationOnInit.raw !== "none") {
+        //     this._inputElem.classList.add(context.parameters.animationOnInit.raw)
+        // }
 
         // ------------------------ inputValue Updating ----------------------
 
@@ -159,34 +190,5 @@ export class hebrewInputControl implements ComponentFramework.StandardControl<II
         // Add code to cleanup control if necessary
     }
 
-    // --------------------- Costum Functions(handlers) --------------------
-
-    public handleChange() {
-        if (this._context.parameters.type.raw === "checkbox") {
-
-            this._context.parameters.inputValue.raw = this._inputElem.checked ? "true" : "false";
-            this._notifyOutputChanged()
-            return
-        }
-        this._value = this._inputElem.value
-        this._context.parameters.inputValue.raw = this._inputElem.value
-
-        this._notifyOutputChanged()
-    }
-
-    public handleFocus(){
-        // this._inputElem.classList.add("input-focused")
-        this._context.parameters.onSelect.raw = true
-        this._inputElem.style.outlineWidth = `${this._context.parameters.outlineWidth.raw}px`
-        this._inputElem.style.outlineOffset = `${this._context.parameters.outlineOffset.raw}px`
-        this._inputElem.style.outlineColor = `${this._context.parameters.outlineColor.raw}`
-        this._inputElem.style.outlineStyle = this._context.parameters.outlineStyle.raw     
-        this._notifyOutputChanged()
-    }
-
-    public handleBlur(){
-        this._context.parameters.onSelect.raw = false
-        this._inputElem.style.outline = "none"
-        this._notifyOutputChanged()
-    }
+    
 }

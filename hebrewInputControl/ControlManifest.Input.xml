@@ -33,9 +33,9 @@
       <value name="time" display-name-key="time">time</value>
     </property>
 
-    <property hidden="true" name="onSelect" display-name-key="onSelect" of-type="TwoOptions" usage="bound" default-value="false">
-      <value name="true" display-name-key="true">true</value>
+    <property name="onSelect" display-name-key="onSelect" of-type="TwoOptions" usage="bound" default-value="false">
       <value name="false" display-name-key="false">false</value>
+      <value name="true" display-name-key="true">true</value>
     </property>
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ Styling Contorls ~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -43,7 +43,7 @@
     <property name="backgroundColor" display-name-key="backgroundColor" description-key="backgroundColor" of-type="SingleLine.Text" usage="bound" required="true" />
 
     <!--                    ~~~~~~ Disabled control ~~~~~~                    -->
-    <property name="disabled" display-name-key="Disabled" of-type="TwoOptions" usage="bound" default-value="false">
+    <property name="disabled" display-name-key="disabled" description-key="disabled" of-type="TwoOptions" usage="bound" default-value="false">
       <value name="true" display-name-key="true">true</value>
       <value name="false" display-name-key="false">false</value>
     </property>
@@ -93,17 +93,17 @@
 
     <!--                   ~~~~~~ Animation Effects ~~~~~~                   -->
     
-    <property name="animationOnInit" display-name-key="animationOnInit" description-key="animationOnInit" default-value="none" of-type="Enum" usage="input" required="true" >
+    <!-- <property name="animationOnInit" display-name-key="animationOnInit" description-key="animationOnInit" default-value="none" of-type="Enum" usage="input" required="true" >
       <value name="none" display-name-key="none">none</value>
       <value name="fade-in" display-name-key="fade-in">fade-in</value>
       <value name="slide-in-top" display-name-key="slide-in-top">slide-in-top</value>
       <value name="slide-in-bottom" display-name-key="slide-in-bottom">slide-in-bottom</value>
       <value name="slide-in-left" display-name-key="slide-in-left">slide-in-left</value>
       <value name="slide-in-right" display-name-key="slide-in-right">slide-in-right</value>
-    </property>
+    </property> -->
 
     <!--                  ~~~~~~ Misc attributes or stylings ~~~~~~          -->
-    <property name="tabIndex" display-name-key="tabIndex" description-key="tabIndex" default-value="" of-type="Whole.None" usage="bound" required="false" />
+    <!-- <property name="tabIndex" display-name-key="tabIndex" description-key="tabIndex" default-value="" of-type="Whole.None" usage="bound" required="false" /> -->
 
     <!--
       Property node's of-type attribute can be of-type-group attribute.
