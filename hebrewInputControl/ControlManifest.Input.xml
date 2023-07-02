@@ -91,16 +91,6 @@
     <property name="outlineColor" display-name-key="outlineColor" description-key="outlineColor" default-value="10" of-type="SingleLine.Text" usage="bound" required="true" />
     <property name="outlineOffset" display-name-key="outlineOffset" description-key="outlineOffset" default-value="10" of-type="Whole.None" usage="bound" required="true" />
 
-    <!--                   ~~~~~~ Animation Effects ~~~~~~                   -->
-    
-    <!-- <property name="animationOnInit" display-name-key="animationOnInit" description-key="animationOnInit" default-value="none" of-type="Enum" usage="input" required="true" >
-      <value name="none" display-name-key="none">none</value>
-      <value name="fade-in" display-name-key="fade-in">fade-in</value>
-      <value name="slide-in-top" display-name-key="slide-in-top">slide-in-top</value>
-      <value name="slide-in-bottom" display-name-key="slide-in-bottom">slide-in-bottom</value>
-      <value name="slide-in-left" display-name-key="slide-in-left">slide-in-left</value>
-      <value name="slide-in-right" display-name-key="slide-in-right">slide-in-right</value>
-    </property> -->
 
     <!--                  ~~~~~~ Misc attributes or stylings ~~~~~~          -->
     <!-- <property name="tabIndex" display-name-key="tabIndex" description-key="tabIndex" default-value="" of-type="Whole.None" usage="bound" required="false" /> -->

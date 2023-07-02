@@ -99,11 +99,7 @@ export class hebrewInputControl implements ComponentFramework.StandardControl<II
         this._inputElem.style.paddingRight = `${context.parameters.paddingRight.raw!}px` || "1px"
         this._inputElem.style.paddingLeft = `${context.parameters.paddingLeft.raw!}px` || "1px"
 
-        // ------------------------- animations Initialization ---------------c
-        // console.log(context.parameters.animationOnInit.raw);
-        // if(context.parameters.animationOnInit.raw !== "none") {
-        //     this._inputElem.classList.add(context.parameters.animationOnInit.raw)
-        // }
+       
 
         
         // ------------------------- Elemnts Creation ------------------------        
@@ -154,12 +150,7 @@ export class hebrewInputControl implements ComponentFramework.StandardControl<II
         this._inputElem.style.paddingRight = `${context.parameters.paddingRight.raw!}px` || "1px"
         this._inputElem.style.paddingLeft = `${context.parameters.paddingLeft.raw!}px` || "1px"
 
-        // ------------------------- animations Initialization ---------------c
-        // console.log(context.parameters.animationOnInit.raw);
-        // if(context.parameters.animationOnInit.raw !== "none") {
-        //     this._inputElem.classList.add(context.parameters.animationOnInit.raw)
-        // }
-
+  
         // ------------------------ inputValue Updating ----------------------
 
         this._inputElem.setAttribute("type", context.parameters.type.raw)
